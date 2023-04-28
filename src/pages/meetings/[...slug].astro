@@ -1,0 +1,28 @@
+---
+import { getEntryBySlug } from "astro:content";
+import Main from "~/layouts/Main.astro";
+
+// Validation logic
+const { slug: maybeSlug } = Astro.params;
+if (!maybeSlug) {
+  throw new Error("Slug is required");
+}
+
+const entry = await getEntryBySlug("meetings", maybeSlug);
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const {
+  render,
+  slug,
+  data: { date },
+} = entry;
+const { Content } = await render();
+---
+
+<Main title={`${slug} - ${date}`}>
+  <article class="prose lg:prose-lg dark:prose-invert p-3 mx-auto">
+    <Content />
+  </article>
+</Main>

@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import { Dashboard } from "~/components/Dashboard";
+import Main from "~/layouts/Main.astro";
+
+const cards = (await getCollection("meetings")).map(
+  ({ slug, data: { date }, body, collection }) => ({
+    collection,
+    title: slug,
+    subtitle: date.toDateString(),
+    content: `${body.slice(0, 70)}...`,
+  })
+);
+---
+
+<Main title="Admin Dashboard">
+  <Dashboard cards={cards} />
+</Main>

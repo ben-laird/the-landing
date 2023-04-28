@@ -1,0 +1,26 @@
+---
+import { Link, Nav } from "~/components";
+import { extendFrom, type InferExt } from "~/lib/extend";
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  navLinks?: InferExt<typeof extNav>;
+  children: HTMLElement[];
+}
+
+const { title, navLinks } = Astro.props as Props;
+
+const extNav = extendFrom<Link[]>([
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Log In", href: "/login" },
+  { name: "Admin Dashboard", href: "/admin/dashboard" },
+  { name: "Resources", href: "/resources" },
+]);
+---
+
+<Base title={title}>
+  <Nav links={extNav(navLinks)} client:load />
+  <slot />
+</Base>

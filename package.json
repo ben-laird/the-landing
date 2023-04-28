@@ -1,0 +1,89 @@
+{
+  "name": "lu-autism-clubhub",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vitest",
+    "dev:web": "astro dev",
+    "preview": "astro preview",
+    "build": "astro build",
+    "lint": "tsc && eslint . --ext .ts --ext .tsx && prettier --check 'src/**/*.{ts,tsx,astro}'",
+    "format": "eslint --fix --ext .ts --ext .tsx && prettier --write 'src/**/*.{ts,tsx,astro}'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cov": "vitest run --coverage",
+    "cov:watch": "vitest --coverage",
+    "cov:detail": "vitest run --coverage && open-cli coverage/index.html",
+    "change": "changeset",
+    "change:empty": "changeset --empty",
+    "review": "changeset version",
+    "release": "pnpm run build && changeset publish",
+    "sync-content": "astro sync"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^2.0.2",
+    "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/vercel": "^3.1.4",
+    "@nanostores/persistent": "^0.7.0",
+    "@nanostores/solid": "^0.3.2",
+    "@prisma/client": "^4.13.0",
+    "@trpc/client": "^10.18.0",
+    "@trpc/server": "^10.18.0",
+    "astro": "^2.1.8",
+    "nanostores": "^0.7.4",
+    "solid-js": "^1.4.3",
+    "superjson": "^1.12.2",
+    "tailwindcss": "^3.0.24",
+    "zod": "^3.20.6"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@fast-check/vitest": "^0.0.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vitest/coverage-c8": "^0.28.5",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-astro": "^0.23.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tailwindcss": "^3.10.1",
+    "open-cli": "^7.1.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-astro": "^0.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.4",
+    "prisma": "^4.13.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vitest": "^0.29.7",
+    "winston": "^3.8.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "tailwindcss",
+      "astro"
+    ],
+    "rules": {
+      "spaced-comment": "warn",
+      "yoda": "error"
+    }
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss",
+      "prettier-plugin-astro"
+    ]
+  }
+}
