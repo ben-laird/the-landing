@@ -7,7 +7,7 @@
     "dev": "vitest",
     "dev:web": "astro dev",
     "preview": "astro preview",
-    "build": "astro build",
+    "build": "prisma generate && pnpm astro build",
     "lint": "tsc && eslint . --ext .ts --ext .tsx && prettier --check 'src/**/*.{ts,tsx,astro}'",
     "format": "eslint --fix --ext .ts --ext .tsx && prettier --write 'src/**/*.{ts,tsx,astro}'",
     "test": "vitest run",
