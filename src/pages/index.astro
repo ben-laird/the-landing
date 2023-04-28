@@ -3,6 +3,16 @@ import { Hero } from "~/components";
 import Main from "~/layouts/Main.astro";
 ---
 
+<script>
+  import { trpcClientSide } from "~/trpc/client";
+
+  const ss = await trpcClientSide.sanity.wishBirthday.query({
+    name: "Jenny",
+    age: 35,
+  });
+  console.log(ss);
+</script>
+
 <Main title="Autism Club Hub">
   <Hero />
 </Main>

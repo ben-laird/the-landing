@@ -30,7 +30,7 @@
     "@prisma/client": "^4.13.0",
     "@trpc/client": "^10.18.0",
     "@trpc/server": "^10.18.0",
-    "astro": "^2.1.8",
+    "astro": "^2.3.2",
     "nanostores": "^0.7.4",
     "solid-js": "^1.4.3",
     "superjson": "^1.12.2",

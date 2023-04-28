@@ -3,18 +3,16 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 
-const {
-  DEV: inDev,
-  VITE_TRPC_DEV_URL: devUrl,
-  VITE_TRPC_PROD_URL: prodUrl,
-} = import.meta.env;
+const site = process.env.VERCEL_URL
+  ? process.env.VERCEL_URL
+  : "http://localhost:3000";
 
-// console.log(`dev: ${devUrl}, prod: ${prodUrl}`);
+// console.log(`site: ${site}`);
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
   integrations: [solidJs(), tailwind()],
   adapter: vercel(),
-  site: inDev ? devUrl || "" : prodUrl || "",
+  site,
 });
